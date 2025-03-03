@@ -14,6 +14,17 @@ const lightNodePlugin = require('./plugins/LightNode');
 const conf = require('./config');
 const { Database } = require('./libs/Database');
 
+// Initialize contractsConfig
+const contractsConfig = {
+  contractTicks: [
+    // Add your contract ticks configuration here
+    { contract: 'exampleContract', action: 'exampleAction', startRefBlock: 0 }
+  ]
+};
+
+// Ensure this is accessible where needed
+global.contractsConfig = contractsConfig;
+
 const logger = createLogger({
   format: format.combine(
     format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),

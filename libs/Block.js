@@ -173,6 +173,10 @@ class Block {
     // use contracts_config contractTicks to trigger ticking contract actions.
     const contractsConfig = await database.getContractsConfig();
 
+    if (!contractsConfig || !contractsConfig.contractTicks) {
+      throw new Error("contractsConfig is not properly initialized");
+    }
+
     for (let i = 0; i < contractsConfig.contractTicks.length; i += 1) {
       const contractTick = contractsConfig.contractTicks[i];
       if (this.refHiveBlockNumber >= contractTick.startRefBlock) {

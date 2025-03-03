@@ -124,7 +124,7 @@ class Database {
 
   getCollection(name) {
     return new Promise((resolve) => {
-      this.database.collection(name, { strict: true }, (err, collection) => {
+      this.database.collection(name, (err, collection) => {
         // collection does not exist
         if (err) {
           resolve(null);
